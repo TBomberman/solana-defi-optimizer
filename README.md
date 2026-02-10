@@ -43,6 +43,14 @@ Ensure your `~/.agentwallet/config.json` file is set up with your AgentWallet AP
 python main.py
 ```
 
+## Static Demo Page (`demo.html`)
+
+A static HTML demo page (`demo.html`) has been generated to showcase the bot's functionality, architecture, and provide a code walkthrough. This file is included directly in the submission.
+
+**To View the Demo:**
+
+Simply open the `demo.html` file in any web browser. It contains all the necessary information and simulated outputs.
+
 ## Development Notes (Current Limitations):
 
 *   **Network Access:** Cannot directly reach external APIs (e.g., Jupiter) from this environment. Mock data is used for development.

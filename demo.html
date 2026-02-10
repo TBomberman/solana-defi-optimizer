@@ -1,3 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solana DeFi Strategy Optimizer - Live Demo</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; color: #333; }
+        h1, h2, h3 { color: #0056b3; }
+        code { background-color: #f4f4f4; padding: 2px 4px; border-radius: 4px; }
+        pre { background-color: #f4f4f4; padding: 10px; border-radius: 8px; overflow-x: auto; }
+        .container { max-width: 900px; margin: auto; }
+        .section { margin-bottom: 40px; padding: 20px; border: 1px solid #eee; border-radius: 8px; }
+        .highlight { background-color: #e6f7ff; padding: 15px; border-left: 5px solid #007bff; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Solana DeFi Strategy Optimizer - Demo</h1>
+        <p class="highlight">
+            Welcome to the demonstration of BenTheBuilder's Solana DeFi Strategy Optimizer! This page illustrates the core functionalities and architecture of the AI agent designed to identify and execute profitable DeFi strategies on the Solana blockchain.
+            Due to current environment limitations (no external network access or package installation), all interactions are currently mocked to showcase the logic.
+        </p>
+
+        <div class="section">
+            <h2>How the Bot Works</h2>
+            <p>
+                The Solana DeFi Strategy Optimizer operates in a continuous loop, constantly monitoring the simulated Solana DeFi market for opportunities. Its primary functions include:
+            </p>
+            <ul>
+                <li><strong>Data Ingestion & Analysis:</strong> Continuously fetches (mocked) market data, including token prices and liquidity pool APYs from various simulated Decentralized Exchanges (DEXs) like Jupiter and Raydium.</li>
+                <li><strong>Strategy Identification:</strong> Employs AI-powered logic to detect two main types of opportunities:
+                    <ul>
+                        <li><strong>Arbitrage:</strong> Compares token prices across different DEXs (e.g., buying SOL on Jupiter and selling on Raydium if a price discrepancy exists).</li>
+                        <li><strong>Yield Farming:</strong> Identifies liquidity pools offering the highest Annual Percentage Yield (APY) for specific token pairs (e.g., SOL-USDC).</li>
+                    </ul>
+                </li>
+                <li><strong>Strategy Execution:</strong> Once a profitable opportunity is found, the bot simulates the necessary transactions, such as swapping tokens or deploying capital into liquidity pools, through a mocked AgentWallet.</li>
+            </ul>
+            <p>The bot prioritizes arbitrage opportunities due to their immediate profit potential, then looks for optimal yield farming strategies.</p>
+        </div>
+
+        <div class="section">
+            <h2>Example Inputs/Outputs (Mocked)</h2>
+            <p>
+                Below are simulated interactions showing how the bot identifies and reacts to market opportunities.
+            </p>
+
+            <h3>Scenario 1: Arbitrage Opportunity Detected</h3>
+            <pre>
+[2026-02-10T21:45:01.123456] Identifying DeFi opportunities...
+[MOCK-Jupiter] Getting quote for 100000000 of So11111111111111111111111111111111111111112 to EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v with 100 slippage.
+[MOCK-Raydium] Getting quote for 100000000 of So11111111111111111111111111111111111111112 to EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v with 100 slippage.
+[OPPORTUNITY] Arbitrage detected (Raydium offers more USDC for SOL): 0.000523 USDC profit
+[2026-02-10T21:45:02.789012] Executing strategy: arbitrage
+[MOCK] AgentWallet config loaded. Solana Address: 92WvmkaRRrfTjMWYRQHaiBGtSUcFUGEZNaBSgC4cDRh3
+[EXECUTE] Performing arbitrage on Jupiter then Raydium. Profit: 0.000523 USDC
+[MOCK-Raydium] Generating swap transaction for quote: So11111111111111111111111111111111111111112 -> EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v
+[MOCK] Transaction generated for Raydium. In a real scenario, this would be signed and sent.
+            </pre>
+
+            <h3>Scenario 2: Yield Farming Opportunity Detected (No Arbitrage)</h3>
+            <pre>
+[2026-02-10T21:45:12.345678] Identifying DeFi opportunities...
+[MOCK-Jupiter] Getting quote for 100000000 of So11111111111111111111111111111111111111112 to EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v with 100 slippage.
+[MOCK-Raydium] Getting quote for 100000000 of So11111111111111111111111111111111111111112 to EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v with 100 slippage.
+[OPPORTUNITY] No profitable arbitrage or yield farming opportunity identified (mocked).
+[2026-02-10T21:45:13.987654] Checking yield farming opportunities...
+[OPPORTUNITY] Yield Farming: Jupiter SOL-USDC offers higher APY (5.50% vs 4.00%)
+[2026-02-10T21:45:14.111222] Executing strategy: yield_farming
+[MOCK] AgentWallet config loaded. Solana Address: 92WvmkaRRrfTjMWYRQHaiBGtSUcFUGEZNaBSgC4cDRh3
+[EXECUTE] Deploying capital for yield farming on Jupiter for SOL-USDC with APY: 5.50%
+[MOCK] Simulated capital deployment for yield farming.
+            </pre>
+
+            <h3>Scenario 3: No Opportunities Found</h3>
+            <pre>
+[2026-02-10T21:45:24.000000] Identifying DeFi opportunities...
+[MOCK-Jupiter] Getting quote for 100000000 of So11111111111111111111111111111111111111112 to EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v with 100 slippage.
+[MOCK-Raydium] Getting quote for 100000000 of So11111111111111111111111111111111111111112 to EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v with 100 slippage.
+[OPPORTUNITY] No profitable arbitrage or yield farming opportunity identified (mocked).
+No opportunities found. Waiting...
+            </pre>
+        </div>
+
+        <div class="section">
+            <h2>Architecture</h2>
+            <p>The Solana DeFi Strategy Optimizer is conceptually structured into the following key modules:</p>
+            <ul>
+                <li><strong>Market Data Module:</strong> Responsible for fetching and simulating real-time market data from Solana DEXs. This includes token prices, liquidity pool depths, and APYs. (Currently mocked)</li>
+                <li><strong>Strategy Engine:</strong> The core AI logic that analyzes the ingested market data. It implements algorithms to detect arbitrage opportunities across multiple DEXs and identify optimal yield farming pools based on APY.</li>
+                <li><strong>Execution Module:</strong> Integrates with DEX aggregators (like Jupiter) to generate and submit swap transactions. It is designed to handle transaction signing and broadcasting. (Currently mocked)</li>
+                <li><strong>Wallet Management (AgentWallet):</strong> Securely interacts with the AgentWallet system for accessing Solana addresses and signing transactions. This module ensures that private keys are handled securely. (Currently mocked)</li>
+                <li><strong>Main Loop:</strong> Orchestrates the continuous cycle of data fetching, opportunity identification, and strategy execution.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Code Walkthrough: <code>main.py</code></h2>
+            <p>Below is the complete source code for <code>main.py</code>, with comments highlighting key sections and their functionalities.</p>
+            <pre><code>
 import json
 import asyncio
 import os
@@ -6,12 +107,14 @@ import random
 
 # --- Mock Data and API Interactions (due to environment limitations) ---
 
+# MockMarketData: Simulates fetching token prices and APYs from different DEXs.
+# Prices fluctuate slightly to create dynamic scenarios.
 class MockMarketData:
     def __init__(self):
         self._prices = {
-            SOL_MINT: 170.0, # Base SOL price
-            USDC_MINT: 1.0,   # USDC is stable
-            RAY_MINT: 0.5    # Base RAY price
+            "So11111111111111111111111111111111111111112": 170.0, # Base SOL price
+            "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v": 1.0,   # USDC is stable
+            "4k3Dyjzvzp8eMZWunexHQvE5dfQqj5ihYiqg5wsNFgsw": 0.5    # Base RAY price
         }
         self._apys = {
             "Jupiter_SOL-USDC": 0.05, # 5% APY
@@ -24,16 +127,15 @@ class MockMarketData:
         if (datetime.now() - self._last_update).total_seconds() > 5: # Update every 5 seconds
             change = current_price * (random.uniform(-max_percent_change, max_percent_change))
             self._prices[mint] = current_price + change
-            # Update _last_update only once per cycle to keep prices consistent for a cycle
             if mint == list(self._prices.keys())[0]: # Only update once for the first mint processed
                 self._last_update = datetime.now()
         return self._prices[mint]
 
     async def get_price(self, mint: str) -> float:
-        if mint == USDC_MINT:
+        if mint == "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v":
             return self._prices[mint]
         elif mint in self._prices:
-            return self._simulate_fluctuation(mint, max_percent_change=0.001 if mint == SOL_MINT else 0.005)
+            return self._simulate_fluctuation(mint, max_percent_change=0.001 if mint == "So11111111111111111111111111111111111111112" else 0.005)
         return 0.0 # Unknown mint
 
     async def get_liquidity_pool_apy(self, exchange_name: str, pair: str) -> float:
@@ -43,6 +145,8 @@ class MockMarketData:
         simulated_apy = max(0.01, base_apy + fluctuation) # Ensure APY is at least 1%
         return simulated_apy
 
+# MockJupiterAPI & MockRaydiumAPI: Simulate interactions with DEX APIs for getting quotes and generating transactions.
+# They introduce slight price differences to create arbitrage opportunities.
 class MockJupiterAPI:
     def __init__(self, market_data: MockMarketData):
         self.market_data = market_data
@@ -57,7 +161,7 @@ class MockJupiterAPI:
         if input_price == 0 or output_price == 0:
             return None
 
-        input_amount_usd = (amount / (10 ** SOL_DECIMALS)) * input_price # Assuming input is SOL for now
+        input_amount_usd = (amount / (10 ** 9)) * input_price # Assuming input is SOL for now
         
         # Introduce slight difference for arbitrage opportunity
         if self.name == "Jupiter":
@@ -65,7 +169,7 @@ class MockJupiterAPI:
         else: # Raydium
             output_amount_usd_raw = input_amount_usd * (random.uniform(0.9996, 1.0000)) # Raydium gives slightly more
 
-        out_amount_base_units = int((output_amount_usd_raw / output_price) * (10 ** USDC_DECIMALS)) # Assuming output is USDC for now
+        out_amount_base_units = int((output_amount_usd_raw / output_price) * (10 ** 6)) # Assuming output is USDC for now
 
         # Apply slippage
         min_out_amount_base_units = int(out_amount_base_units * (1 - (slippage_bps / 10000)))
@@ -97,6 +201,8 @@ class MockRaydiumAPI(MockJupiterAPI):
         super().__init__(market_data)
         self.name = "Raydium"
 
+# MockAgentWallet: Simulates loading wallet configuration and sending transactions.
+# In a real scenario, this would interact with a secure AgentWallet service.
 class MockAgentWallet:
     def __init__(self, config_path="~/.agentwallet/config.json"):
         self.config_path = os.path.expanduser(config_path)
@@ -123,6 +229,7 @@ class MockAgentWallet:
         return 0.5 # Example: 0.5 SOL
 
 # --- Constants ---
+# Solana token mint addresses and their decimal places.
 SOL_MINT = "So11111111111111111111111111111111111111112"
 USDC_MINT = "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
 RAY_MINT = "4k3Dyjzvzp8eMZWunexHQvE5dfQqj5ihYiqg5wsNFgsw" # Example Raydium Mint Address
@@ -132,6 +239,7 @@ RAY_DECIMALS = 6
 
 # --- Strategy Logic ---
 
+# check_yield_farming_opportunity: Identifies liquidity pools with higher APY.
 async def check_yield_farming_opportunity(market_data: MockMarketData):
     print(f"[{datetime.now().isoformat()}] Checking yield farming opportunities...", flush=True)
     
@@ -159,6 +267,8 @@ async def check_yield_farming_opportunity(market_data: MockMarketData):
         }
     return None
 
+# identify_opportunity: The core logic to detect arbitrage or yield farming opportunities.
+# It prioritizes arbitrage.
 async def identify_opportunity(jupiter_api: MockJupiterAPI, raydium_api: MockRaydiumAPI, market_data: MockMarketData):
     print(f"[{datetime.now().isoformat()}] Identifying DeFi opportunities...", flush=True)
     
@@ -211,6 +321,7 @@ async def identify_opportunity(jupiter_api: MockJupiterAPI, raydium_api: MockRay
     print("[OPPORTUNITY] No profitable arbitrage or yield farming opportunity identified (mocked).", flush=True)
     return None
 
+# execute_strategy: Simulates the execution of the identified DeFi strategy.
 async def execute_strategy(opportunity: dict, agent_wallet: MockAgentWallet, jupiter_api: MockJupiterAPI, raydium_api: MockRaydiumAPI):
     print(f"[{datetime.now().isoformat()}] Executing strategy: {opportunity['type']}", flush=True)
 
@@ -250,6 +361,7 @@ async def execute_strategy(opportunity: dict, agent_wallet: MockAgentWallet, jup
     else:
         print(f"[EXECUTE] Unknown opportunity type: {opportunity['type']}", flush=True)
 
+# main: The entry point of the bot, initializes mock APIs and runs the main strategy loop.
 async def main():
     print("Starting Solana DeFi Strategy Optimizer (Mocked Environment)", flush=True)
 
@@ -273,3 +385,8 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+            </code></pre>
+        </div>
+    </div>
+</body>
+</html>
